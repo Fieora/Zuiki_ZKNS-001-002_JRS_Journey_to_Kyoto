@@ -31,25 +31,25 @@ def clearscreen():
 
 
 def brake_inc():
-    pyautogui.keyDown('k')  # Increase brake
-    pyautogui.keyUp('k')
+    pyautogui.keyDown('right')  # Increase brake
+    pyautogui.keyUp('right')
 
 
 def brake_dec():
-    pyautogui.keyDown('j')  # Decrease brake
-    pyautogui.keyUp('j')
+    pyautogui.keyDown('left')  # Decrease brake
+    pyautogui.keyUp('left')
 
 
 def brake_eb():
-    pyautogui.keyDown('l')  # Set brake to EB
-    pyautogui.keyUp('l')
+    pyautogui.keyDown('down')  # Set brake to EB
+    pyautogui.keyUp('down')
 
 
 def neutral():
     pyautogui.keyDown('s')  # Set master controller to off
     pyautogui.keyUp('s')
-    pyautogui.keyDown('h')  # Release brakes
-    pyautogui.keyUp('h')
+    pyautogui.keyDown('up')  # Release brakes
+    pyautogui.keyUp('up')
 
 
 def power_inc():
@@ -120,7 +120,7 @@ def button_pause():
 for i in range(pygame.joystick.get_count()):
     jid = {joyid: i, joyname: pygame.joystick.Joystick(i).get_name()}
     joystick_list.append(jid)
-mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "Nintendo Switch Pro Controller"),
+mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "One Handle MasCon for Nintendo Switch Exclusive Edition"),
                      None)
 
 if mascon_select is None:
@@ -167,25 +167,26 @@ try:
                 # Lever section
                 mascon_axis = (joysticks[mascon_select].get_axis(1))
                 mascon_axis = (round(mascon_axis, 2))
+                #print(mascon_axis)
                 if mascon_axis == 0.8:
                     #print("P4")
                     qMascon.put(power_max)
                     mascon_counter = 1
-                if mascon_axis == 0.62:
+                if mascon_axis == 0.61:
                     if mascon_counter == 3:
                         qMascon.put(power_inc)
                         mascon_counter = 2
                     if mascon_counter == 1:
                         qMascon.put(power_dec)
                         mascon_counter = 2
-                if mascon_axis == 0.44:
+                if mascon_axis == 0.43:
                     if mascon_counter == 4:
                         qMascon.put(power_inc)
                         mascon_counter = 3
                     if mascon_counter == 2:
                         qMascon.put(power_dec)
                         mascon_counter = 3
-                if mascon_axis == 0.25:
+                if mascon_axis == 0.24:
                     if mascon_counter == 5:
                         qMascon.put(power_inc)
                         mascon_counter = 4
