@@ -1,9 +1,10 @@
 # Zuiki_ZKNS-002_JRS_Journey_to_Kyoto
 This is a quick hack of the original script to work with the Zuiki ZKNS-002 (Re-edition of the Densha de Go controller for Switch "Exclusive Edition").
+
 It is also modified to work with default keyboard bindings since version 1.0.3 of the game.
 
 
-Original:
+### Original:
 
 Zuiki "support" for Japanese Rail Sim: Journey to Kyoto via keyboard events.
 
