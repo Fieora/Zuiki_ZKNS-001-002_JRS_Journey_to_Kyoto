@@ -3,6 +3,8 @@ This is a quick hack of the original script to work with the Zuiki ZKNS-002 (Re-
 
 It is also modified to work with default keyboard bindings since version 1.0.3 of the game.
 
+I also added an extra standalone exe to fix ZKNS-001 with version 1.0.3. 
+
 
 ### Original:
 
