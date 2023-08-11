@@ -1,4 +1,4 @@
-# Zuiki_ZKNS-002_JRS_Journey_to_Kyoto
+# Zuiki_ZKNS-001-002_JRS_Journey_to_Kyoto
 This is a quick hack of the original script to work with both Zuiki ZKNS-001 and 002 (Re-edition of the Densha de Go controller for Switch "Exclusive Edition").
 
 It is also modified to work with default keyboard bindings since version 1.0.3 of the game.
