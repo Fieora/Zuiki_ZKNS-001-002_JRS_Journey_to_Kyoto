@@ -174,25 +174,28 @@ try:
                 mascon_axis = (joysticks[mascon_select].get_axis(1))
                 mascon_axis = (round(mascon_axis, 2))
                 print(mascon_axis)
-                if mascon_axis in numpy.arange(0.8, 0.9):
-                    #print("P4")
+                if numpy.isclose(mascon_axis, 0.8, atol=0.1):
+                    print("P4")
                     qMascon.put(power_max)
                     mascon_counter = 1
-                if mascon_axis in numpy.arange(0.6, 0.7):
+                if numpy.isclose(mascon_axis, 0.6, atol=0.1):
+                    print("P3")
                     if mascon_counter == 3:
                         qMascon.put(power_inc)
                         mascon_counter = 2
                     if mascon_counter == 1:
                         qMascon.put(power_dec)
                         mascon_counter = 2
-                if mascon_axis in numpy.arange(0.4, 0.5):
+                if numpy.isclose(mascon_axis, 0.4, atol=0.1):
+                    print("P2")
                     if mascon_counter == 4:
                         qMascon.put(power_inc)
                         mascon_counter = 3
                     if mascon_counter == 2:
                         qMascon.put(power_dec)
                         mascon_counter = 3
-                if mascon_axis in numpy.arange(0.2, 0.3):
+                if numpy.isclose(mascon_axis, 0.2, atol=0.1):
+                    print("P1")
                     if mascon_counter == 5:
                         qMascon.put(power_inc)
                         mascon_counter = 4
@@ -202,7 +205,8 @@ try:
                 if mascon_axis == 0.0:
                     qMascon.put(neutral)
                     mascon_counter = 5
-                if mascon_axis in numpy.arange(-0.2, -0.28):
+                if numpy.isclose(mascon_axis, -0.21, atol=0.03):
+                    print ("B1")
                     if mascon_counter == 5:
                         qMascon.put(brake_inc)
                         mascon_counter = 6
@@ -211,7 +215,8 @@ try:
                         if notchfix:
                             qMascon.put(brake_dec)
                         mascon_counter = 6
-                if mascon_axis in numpy.arange(-0.3, -0.38):
+                if numpy.isclose(mascon_axis, -0.32, atol=0.03):
+                    print ("B2")
                     if mascon_counter == 6:
                         qMascon.put(brake_inc)
                         if notchfix:
@@ -220,7 +225,8 @@ try:
                     if mascon_counter == 8:
                         qMascon.put(brake_dec)
                         mascon_counter = 7
-                if mascon_axis in numpy.arange(-0.4, -0.48):
+                if numpy.isclose(mascon_axis, -0.43, atol=0.03):
+                    print ("B3")
                     if mascon_counter == 7:
                         qMascon.put(brake_inc)
                         mascon_counter = 8
@@ -229,7 +235,8 @@ try:
                         if notchfix:
                             qMascon.put(brake_dec)
                         mascon_counter = 8
-                if mascon_axis in numpy.arange(-0.5, -0.58):
+                if numpy.isclose(mascon_axis, -0.53, atol=0.03):
+                    print ("B4")
                     if mascon_counter == 8:
                         qMascon.put(brake_inc)
                         if notchfix:
@@ -238,14 +245,16 @@ try:
                     if mascon_counter == 10:
                         qMascon.put(brake_dec)
                         mascon_counter = 9
-                if mascon_axis in numpy.arange(-0.6, -0.68):
+                if numpy.isclose(mascon_axis, -0.64, atol=0.03):
+                    print ("B5")
                     if mascon_counter == 9:
                         qMascon.put(brake_inc)
                         mascon_counter = 10
                     if mascon_counter == 11:
                         qMascon.put(brake_dec)
                         mascon_counter = 10
-                if mascon_axis in numpy.arange(-0.7, -0.78):
+                if numpy.isclose(mascon_axis, -0.75, atol=0.03):
+                    print ("B6")
                     if mascon_counter == 10:
                         qMascon.put(brake_inc)
                         if notchfix:
@@ -254,7 +263,8 @@ try:
                     if mascon_counter == 12:
                         qMascon.put(brake_dec)
                         mascon_counter = 11
-                if mascon_axis in numpy.arange(-0.8, -0.9):
+                if numpy.isclose(mascon_axis, -0.85, atol=0.03):
+                    print ("B7")
                     if mascon_counter == 11:
                         qMascon.put(brake_inc)
                         mascon_counter = 12
@@ -262,6 +272,7 @@ try:
                         qMascon.put(brake_dec)
                         mascon_counter = 12
                 if mascon_axis == -1.00:
+                    print ("EB")
                     qMascon.put(brake_eb)
                     mascon_counter = 14
 
