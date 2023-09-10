@@ -105,12 +105,6 @@ def button_pause():
 for i in range(pygame.joystick.get_count()):
     jid = {joyid: i, joyname: pygame.joystick.Joystick(i).get_name()}
     joystick_list.append(jid)
-    print("")
-    print("List of detected joystick(s):")
-    print("検出されたジョイスティックのリスト:")
-    for i, item in enumerate(joystick_list):
-        print(item)
-    print("")
 mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "Nintendo Switch Pro Controller"), None)
 
 if mascon_select is None:
@@ -124,6 +118,12 @@ if mascon_select is None:
     print("No 'Nintendo Switch Pro Controller' or 'One Handle MasCon for Nintendo Switch Exclusive Edition' found. Connect the correct controller and restart the script.")
     print("")
     print("「Nintendo Switch Pro Controller」または「One Handle MasCon for Nintendo Switch Exclusive Edition」は見つかりませんでした。 正しいコントローラーを接続し、スクリプトを再起動します。")
+    print("")
+    print("List of detected joystick(s):")
+    print("検出されたジョイスティックのリスト:")
+    for i, item in enumerate(joystick_list):
+        print(item)
+    print("")
     input()
     exit()
 
