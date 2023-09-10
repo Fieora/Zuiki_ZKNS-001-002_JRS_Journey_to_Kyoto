@@ -20,6 +20,7 @@ notchfix = False
 # Define functions
 
 def menu():
+    print('')
     print('#####################################################################################')
     print('# Start the game and use the EB notch to sync controller once you are in the train.')
     print('# Press CTRL + C to end the script.')
@@ -28,6 +29,7 @@ def menu():
     print('# CTRL + C を押してスクリプトを終了します。')
     print('#')
     print(f'# Notchfix enabled: {notchfix}')
+    print('')
 
 def brake_inc():
     pyautogui.keyDown('right')  # Increase brake
@@ -109,16 +111,18 @@ for i in range(pygame.joystick.get_count()):
     for i, item in enumerate(joystick_list):
         print(item)
     print("")
-    mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "Nintendo Switch Pro Controller"), None)
+mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "Nintendo Switch Pro Controller"), None)
 
 if mascon_select is None:
     for i in range(pygame.joystick.get_count()):
         jid = {joyid: i, joyname: pygame.joystick.Joystick(i).get_name()}
         joystick_list.append(jid)
-        mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "One Handle MasCon for Nintendo Switch Exclusive Edition"), None)
+    mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "One Handle MasCon for Nintendo Switch Exclusive Edition"), None)
 
 if mascon_select is None:
+    print("")
     print("No 'Nintendo Switch Pro Controller' or 'One Handle MasCon for Nintendo Switch Exclusive Edition' found. Connect the correct controller and restart the script.")
+    print("")
     print("「Nintendo Switch Pro Controller」または「One Handle MasCon for Nintendo Switch Exclusive Edition」は見つかりませんでした。 正しいコントローラーを接続し、スクリプトを再起動します。")
     input()
     exit()
