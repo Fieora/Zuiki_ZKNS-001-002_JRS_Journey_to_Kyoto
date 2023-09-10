@@ -9,11 +9,14 @@ It is also modified to work with default keyboard bindings since version 1.0.3 o
 また、ゲームのバージョン 1.0.3 以降のデフォルトのキーボード バインディングで動作するように変更されています。
 
 #### Known bug / 既知のバグ:
-If another controler (in my case a PS4 controller) is connected at the same time as the ZKNS, the script may duplicate all the inputs and provoke high CPU usage, please be sure to unplug others if you see logging being flooded.
-I suspected it is caused by a drifting joystick, even sightly.
+If another controller (in my case a PS4 one) is connected at the same time as the ZKNS, the script may duplicate all the inputs and provoke high CPU usage, please be sure to unplug others if you see the logging being flooded.
+
+I suspect it is caused by a drifting joystick, even sightly.
 
 別のコントローラー (私の場合は PS4 コントローラー) が ZKNS と同時に接続されている場合、スクリプトによってすべての入力が複製され、CPU 使用率が高くなる可能性があります。ログがあふれている場合は、必ず他のコントローラーを取り外してください。
-見た目にもジョイスティックのドリフトが原因ではないかと思いました。
+
+見た目にもジョイスティックのドリフトが原因ではないかと思われます。
+
 
 ### Original:
 
