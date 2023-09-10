@@ -2,7 +2,6 @@ import pyautogui  # install via pip install pyautogui
 import pygame  # install via pip install pygame
 import threading
 import queue
-import os
 import numpy
 
 pyautogui.PAUSE = 0.0571  # Lowest possible delay before the game starts dropping key presses.
@@ -21,30 +20,26 @@ notchfix = False
 # Define functions
 
 def menu():
-    clearscreen()
     print('#####################################################################################')
     print('# Start the game and use the EB notch to sync controller once you are in the train.')
     print('# Press CTRL + C to end the script.')
+    print('#')
+    print('# ゲームを開始し、電車に乗ったらEBノッチを使用してコントローラーを同期します。')
+    print('# CTRL + C を押してスクリプトを終了します。')
+    print('#')
     print(f'# Notchfix enabled: {notchfix}')
-
-def clearscreen():
-    os.system('clear')
-
 
 def brake_inc():
     pyautogui.keyDown('right')  # Increase brake
     pyautogui.keyUp('right')
 
-
 def brake_dec():
     pyautogui.keyDown('left')  # Decrease brake
     pyautogui.keyUp('left')
 
-
 def brake_eb():
     pyautogui.keyDown('down')  # Set brake to EB
     pyautogui.keyUp('down')
-
 
 def neutral():
     pyautogui.keyDown('s')  # Set master controller to off
@@ -52,66 +47,53 @@ def neutral():
     pyautogui.keyDown('up')  # Release brakes
     pyautogui.keyUp('up')
 
-
 def power_inc():
     pyautogui.keyDown('x')  # Increase power
     pyautogui.keyUp('x')
-
 
 def power_dec():
     pyautogui.keyDown('d')  # Decrease power
     pyautogui.keyUp('d')
 
-
 def power_max():
     pyautogui.keyDown('z')  # Set power to max
     pyautogui.keyUp('z')
-
 
 def button_a():
     pyautogui.keyDown('enter')
     pyautogui.keyUp('enter')
 
-
 def button_b():
     pyautogui.keyDown('esc')
     pyautogui.keyUp('esc')
-
 
 def button_y():
     pyautogui.keyDown('z')
     pyautogui.keyUp('z')
 
-
 def button_l():
     pyautogui.keyDown('l')
     pyautogui.keyUp('l')
-
 
 def button_r():
     pyautogui.keyDown('r')
     pyautogui.keyUp('r')
 
-
 def button_dpad_left():
     pyautogui.keyDown('left')
     pyautogui.keyUp('right')
-
 
 def button_dpad_right():
     pyautogui.keyDown('right')
     pyautogui.keyUp('right')
 
-
 def button_dpad_up():
     pyautogui.keyDown('up')
     pyautogui.keyUp('up')
 
-
 def button_dpad_down():
     pyautogui.keyDown('down')
     pyautogui.keyUp('down')
-
 
 def button_pause():
     pyautogui.keyDown('tab')
@@ -121,47 +103,50 @@ def button_pause():
 for i in range(pygame.joystick.get_count()):
     jid = {joyid: i, joyname: pygame.joystick.Joystick(i).get_name()}
     joystick_list.append(jid)
-mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "Nintendo Switch Pro Controller"), None)
+    print("")
+    print("List of detected joystick(s):")
+    print("検出されたジョイスティックのリスト:")
+    for i, item in enumerate(joystick_list):
+        print(item)
+    print("")
+    mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "Nintendo Switch Pro Controller"), None)
 
 if mascon_select is None:
     for i in range(pygame.joystick.get_count()):
         jid = {joyid: i, joyname: pygame.joystick.Joystick(i).get_name()}
         joystick_list.append(jid)
-    mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "One Handle MasCon for Nintendo Switch Exclusive Edition"), None)
+        mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "One Handle MasCon for Nintendo Switch Exclusive Edition"), None)
 
 if mascon_select is None:
-    print("No 'Nintendo Switch Pro Controller' or 'One Handle MasCon for Nintendo Switch Exclusive Edition' found. Connect the correct controller and restart the script")
+    print("No 'Nintendo Switch Pro Controller' or 'One Handle MasCon for Nintendo Switch Exclusive Edition' found. Connect the correct controller and restart the script.")
+    print("「Nintendo Switch Pro Controller」または「One Handle MasCon for Nintendo Switch Exclusive Edition」は見つかりませんでした。 正しいコントローラーを接続し、スクリプトを再起動します。")
+    input()
     exit()
 
 mascon_counter = 99
 pygame.event.clear()  # Clear events to remove wrong inputs.
-clearscreen()
 print('Please enter the number of the line you want to drive and confirm with enter:')
-print('1:   Kurama Line')
-print('2:   Eizan Line')
+print('運転したい路線の番号を入力し、Enter キーを押して確定してください:')
+print('1:   Kurama Line | 鞍馬線')
+print('2:   Eizan Line | 叡山電車')
 
 rtselect = input()
 if rtselect == '2':
     notchfix = True
-clearscreen()
 menu()
 
 # Queue worker functions
-
-
 def wmascon():
     while True:
         item1 = qMascon.get()
         item1()
         qMascon.task_done()
 
-
 def wbutton():
     while True:
         item2 = qButton.get()
         item2()
         qButton.task_done()
-
 
 try:
     threading.Thread(target=wmascon, daemon=True).start()
