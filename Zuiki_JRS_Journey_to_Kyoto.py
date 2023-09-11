@@ -101,7 +101,6 @@ def button_pause():
     pyautogui.keyDown('tab')
     pyautogui.keyUp('tab')
 
-
 for i in range(pygame.joystick.get_count()):
     jid = {joyid: i, joyname: pygame.joystick.Joystick(i).get_name()}
     joystick_list.append(jid)
@@ -111,19 +110,19 @@ for i in range(pygame.joystick.get_count()):
     for i, item in enumerate(joystick_list):
         print(item)
     print("")
-mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "Nintendo Switch Pro Controller"), None)
 
-if mascon_select is None:
-    for i in range(pygame.joystick.get_count()):
-        jid = {joyid: i, joyname: pygame.joystick.Joystick(i).get_name()}
-        joystick_list.append(jid)
-    mascon_select = next((i for i, item in enumerate(joystick_list) if item["joyname"] == "One Handle MasCon for Nintendo Switch Exclusive Edition"), None)
+mascon_select = None
+for i, item in enumerate(joystick_list):
+    if item["joyname"] == "Nintendo Switch Pro Controller":
+        mascon_select = i
+    elif "One Handle MasCon for Nintendo Switch" in item["joyname"]:
+        mascon_select = i
 
 if mascon_select is None:
     print("")
-    print("No 'Nintendo Switch Pro Controller' or 'One Handle MasCon for Nintendo Switch Exclusive Edition' found. Connect the correct controller and restart the script.")
+    print("No 'Nintendo Switch Pro Controller' or 'One Handle MasCon for Nintendo Switch / Exclusive Edition' found. Connect the correct controller and restart the script.")
     print("")
-    print("「Nintendo Switch Pro Controller」または「One Handle MasCon for Nintendo Switch Exclusive Edition」は見つかりませんでした。 正しいコントローラーを接続し、スクリプトを再起動します。")
+    print("「Nintendo Switch Pro Controller」または「One Handle MasCon for Nintendo Switch / Exclusive Edition」は見つかりませんでした。 正しいコントローラーを接続し、スクリプトを再起動します。")
     input()
     exit()
 
