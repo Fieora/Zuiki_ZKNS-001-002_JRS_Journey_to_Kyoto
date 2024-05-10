@@ -64,7 +64,6 @@ def power_max():
 def button_a():
     pyautogui.keyDown('enter')
     pyautogui.keyUp('enter')
-
 def button_b():
     pyautogui.keyDown('esc')
     pyautogui.keyUp('esc')
@@ -77,9 +76,20 @@ def button_l():
     pyautogui.keyDown('l')
     pyautogui.keyUp('l')
 
-def button_r():
+def button_l2():
+    pyautogui.keyDown(' ')
+    pyautogui.keyUp(' ')
+
+def button_minus():
     pyautogui.keyDown('r')
     pyautogui.keyUp('r')
+
+def button_r():
+    pyautogui.keyDown('e')
+    pyautogui.keyUp('e')
+
+def button_r2():
+    pyautogui.keyDown('w')
 
 def button_dpad_left():
     pyautogui.keyDown('left')
@@ -116,6 +126,8 @@ for i, item in enumerate(joystick_list):
     if item["joyname"] == "Nintendo Switch Pro Controller":
         mascon_select = i
     elif "One Handle MasCon for Nintendo Switch" in item["joyname"]:
+        mascon_select = i
+    elif "One Handle MasCon for Nintendo Switch / Exclusive Edition":
         mascon_select = i
 
 if mascon_select is None:
@@ -263,28 +275,40 @@ try:
                     print ("EB")
                     qMascon.put(brake_eb)
                     mascon_counter = 14
-
+            if (event.type == pygame.JOYBUTTONDOWN): 
+                print(event)
             # Button section
-            if event.type == pygame.JOYBUTTONUP and event.button == 0:
+            if event.type == pygame.JOYBUTTONUP and event.button == 2: # a
                 qButton.put(button_a)
-            if event.type == pygame.JOYBUTTONUP and event.button == 1:
+            if event.type == pygame.JOYBUTTONUP and event.button == 1: # b
                 qButton.put(button_b)
-            if event.type == pygame.JOYBUTTONUP and event.button == 3:
+            if event.type == pygame.JOYBUTTONUP and event.button == 0: # y
                 qButton.put(button_y)
-            if event.type == pygame.JOYBUTTONUP and event.button == 5:
+            if event.type == pygame.JOYBUTTONUP and event.button == 9: # pause
                 qButton.put(button_pause)
-            if event.type == pygame.JOYBUTTONUP and event.button == 9:
+            if event.type == pygame.JOYBUTTONUP and event.button == 4: # music left / L1
                 qButton.put(button_l)
-            if event.type == pygame.JOYBUTTONUP and event.button == 10:
-                qButton.put(button_r)
-            if event.type == pygame.JOYBUTTONUP and event.button == 11:
+            if event.type == pygame.JOYBUTTONUP and event.button == 8: # music right / -
+                qButton.put(button_minus)
+            if event.type == pygame.JOYBUTTONUP and event.button == 6: # change view / L2
+                qButton.put(button_l2)
+            if event.type == pygame.JOYHATMOTION and event.value == (0, 1): # up
                 qButton.put(button_dpad_up)
-            if event.type == pygame.JOYBUTTONUP and event.button == 12:
+            if event.type == pygame.JOYHATMOTION and event.value == (0, -1): # down
                 qButton.put(button_dpad_down)
-            if event.type == pygame.JOYBUTTONUP and event.button == 13:
+            if event.type == pygame.JOYHATMOTION and event.value == (-1, 0): # left
                 qButton.put(button_dpad_left)
-            if event.type == pygame.JOYBUTTONUP and event.button == 14:
+            if event.type == pygame.JOYHATMOTION and event.value == (1, 0): # right
                 qButton.put(button_dpad_right)
+            if event.type == pygame.JOYBUTTONDOWN and event.button == 7: #horn 1
+                pyautogui.keyDown('e')
+            if event.type == pygame.JOYBUTTONUP and event.button == 7:
+                pyautogui.keyUp('e')
+            if event.type == pygame.JOYBUTTONDOWN and event.button == 5: #horn 2
+                pyautogui.keyDown('w')
+            if event.type == pygame.JOYBUTTONUP and event.button == 5:
+                pyautogui.keyUp('w')
+            
 
         clock.tick_busy_loop(60)
 except KeyboardInterrupt:
