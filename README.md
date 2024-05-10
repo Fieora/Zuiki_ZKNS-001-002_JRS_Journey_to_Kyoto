@@ -1,4 +1,4 @@
-# Zuiki_ZKNS-001-002_JRS_Journey_to_Kyoto
+# Zuiki_ZKNS-011_JRS_Journey_to_Kyoto
 This is a quick hack of the original script to work with both Zuiki ZKNS-001 and 002 (Re-edition of the Densha de Go controller for Switch "Exclusive Edition").
 
 It is also modified to work with default keyboard bindings since version 1.0.3 of the game.
@@ -37,7 +37,7 @@ This is by design, as the game only accepts keyboard inputs separated by a pause
 
  
  
-## Make sure to disable Steam Input for the game, otherwise the controller will behave incorrectly.  
+## Works with steam input enabled 
   
   
 Lever and most buttons are working.  
@@ -57,7 +57,10 @@ Button mappings:
 | Y  | Z (Retry)  |
 | Home  | Tab(Pause)  |
 | L  | L  |
+| -  | Music right (pause screen)  |  
 | R  | Horn  |  
+| ZR  | Horn 2  | 
+| ZL | Space (change view)  |  
 
 Horn is hard mapped, as the game still recognizes some of the buttons in game.  
 That's why it's also important to use all buttons, with the exception of Home and R, only while the game is paused or in menus.
