@@ -1,10 +1,10 @@
 # Zuiki_ZKNS-011_JRS_Journey_to_Kyoto
-This is a quick hack of the original script to work with both Zuiki ZKNS-001 and 002 (Re-edition of the Densha de Go controller for Switch "Exclusive Edition").
+This is a quick hack of the original script to work with both Zuiki ZKNS-011 (ZUIKI MasCon for Nintendo Switch RED, probably the blue too).
 
 It is also modified to work with default keyboard bindings since version 1.0.3 of the game.
 
 
-これは、Zuiki ZKNS-001 と 002 (Switch 用「電車でGO」コントローラー「Exclusive Edition」の再編集) の両方で動作するように、オリジナルのスクリプトをクイックハックしたものです。
+これは、Zuiki ZKNS-011 
 
 また、ゲームのバージョン 1.0.3 以降のデフォルトのキーボード バインディングで動作するように変更されています。
 
