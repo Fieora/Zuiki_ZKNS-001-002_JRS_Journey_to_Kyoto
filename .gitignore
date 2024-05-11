@@ -1,0 +1,8 @@
+*.cfg
+/.venv
+build
+dist
+Lib
+Scripts
+*.exe
+*.spec
